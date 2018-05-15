@@ -1,19 +1,19 @@
 
 /**
- * Write a description of class sdfghj here.
+ * Write a description of class STEIN here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class sdfghj
+public class STEIN extends HINDERNIS
 {
     // instance variables - replace the example below with your own
     private int x;
 
     /**
-     * Constructor for objects of class sdfghj
+     * Constructor for objects of class STEIN
      */
-    public sdfghj()
+    public STEIN()
     {
         // initialise instance variables
         x = 0;
