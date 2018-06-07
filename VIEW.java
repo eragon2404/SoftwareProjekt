@@ -11,7 +11,7 @@ public class VIEW extends Game
         c = new CONTROLLER(m,this);
     }
     
-    public void hinzufügen(Raum obj)
+    public void hinzufuegen(Raum obj)
     {
         wurzel.add(obj);
     }

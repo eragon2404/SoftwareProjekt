@@ -7,7 +7,7 @@ public class MODEL
     {
         v = newv;
         spieler = new Oktopus();
-        v.hinzufügen(spieler.textur);
+        v.hinzufuegen(spieler.textur);
     }
     
     public void up()
