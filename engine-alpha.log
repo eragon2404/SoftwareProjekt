@@ -1,0 +1,3 @@
+[Thu Jun 07 15:32:57 CEST 2018][ERROR] Fehler beim Lesen der Datei. Existiert die Datei mit diesem Namen wirklich?
+C:\Users\benni\Documents\BlueJ\Projekt\Krokodil.eaf (DateiManager.java:678)
+[Thu Jun 07 15:32:57 CEST 2018][ERROR] Kritischer Fehler im Ticker: Eine Ausnahme wurde nicht abgefangen. Der Ticker wurde angehalten. Die folgende StackTrace sollte dir weitere Informationen liefern. (Manager.java:199)

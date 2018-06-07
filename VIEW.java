@@ -1,33 +1,23 @@
+import ea.*;
 
-/**
- * Write a description of class VIEW here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class VIEW
+public class VIEW extends Game 
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private CONTROLLER c;
+    private MODEL m;
 
-    /**
-     * Constructor for objects of class VIEW
-     */
-    public VIEW()
+    public VIEW() {
+        super(1000, 1000);
+        m = new MODEL(this);
+        c = new CONTROLLER(m,this);
+    }
+    
+    public void hinzufügen(Raum obj)
     {
-        // initialise instance variables
-        x = 0;
+        wurzel.add(obj);
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    @Override
+    public void tasteReagieren(int code) {
+        c.taste(code);
     }
 }

@@ -1,24 +1,27 @@
-
-/**
- * Abstract class SPIELER - write a description of the class here
- *
- * @author (your name here)
- * @version (version number or date here)
- */
-public abstract class SPIELER 
+import ea.*;
+public abstract class SPIELER
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    public Raum textur;
+    public int breite;
+    public int bahn;
+    public int posX;
+    public int posY;
+    
+    public void links()
     {
-        // put your code here
-        return x + y;
+        bahn --;
+        posX -= 20;
+    }
+    public void rechts()
+    {
+        bahn ++;
+        posX += 20;
+    }
+    
+    public int getbahn()
+    {
+        return bahn;
     }
 }
+
+    
