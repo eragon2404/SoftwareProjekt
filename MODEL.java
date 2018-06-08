@@ -6,7 +6,7 @@ public class MODEL
     public MODEL(VIEW newv)
     {
         v = newv;
-        spieler = new Schnorchler();
+        spieler = new Baumstamm();
         v.hinzufuegen(spieler.textur);
     }
     
