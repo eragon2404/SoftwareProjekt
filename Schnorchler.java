@@ -1,10 +1,9 @@
 import ea.*;
 public class Schnorchler extends SPIELER
 {
-    public Schnorchler()
+    public Schnorchler(MODEL newm)
     {
-        PosX = 150;
-        PosY = 900;
-        textur = new Figur(PosX,PosY,"Recources/Schnorchler.eaf");
+        super(newm);
+        textur = new Figur(PosX,PosY,"Recources/schnorchler.eaf");
     }
 }

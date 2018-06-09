@@ -1,10 +1,9 @@
 import ea.*;
 public class Baumstamm extends SPIELER
 {
-    public Baumstamm()
+    public Baumstamm(MODEL newm)
     {
-        PosX = 150;
-        PosY = 300;
-        textur = new Figur(PosX,PosY,"Recources/Baumstamm.eaf");
+        super(newm);
+        textur = new Figur(PosX,PosY,"Recources/baumstamm.eaf");
     }
 }

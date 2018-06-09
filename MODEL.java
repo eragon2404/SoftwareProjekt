@@ -4,17 +4,21 @@ public class MODEL
     private VIEW v;
     public SPIELER spieler;
     public BAHN[] bahnen;
-    public MODEL(VIEW newv,int aBahn,int x,int y)
+    public int x;
+    public int y;
+    
+    public MODEL(VIEW newv,int aBahn,int nx,int ny)
     {
         v = newv;
         bahnen = new BAHN[aBahn];
+        x = nx;
+        y = ny;
         for(int i = 0; i < aBahn; i++)
         {
             bahnen[i] = new BAHN(i+1,aBahn,x,y);
         }
-        spieler = new Oktopus();
+        spieler = new Baumstamm(this);
         v.hinzufuegen(spieler.textur);
-        v.addObservable(spieler);
     }
     
     public void tick()
@@ -22,6 +26,11 @@ public class MODEL
         for(int i = 0; i < bahnen.length; i++)
         {
         }
+    }
+    
+    public SPIELER getSpieler()
+    {
+        return spieler;
     }
 }
     

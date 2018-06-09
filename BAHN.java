@@ -27,4 +27,9 @@ public class BAHN
             aktiv.get(i).tick(spieler);
         }
     }
+    
+    public float getMitte()
+    {
+        return mitte;
+    }
 }

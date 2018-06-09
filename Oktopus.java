@@ -1,12 +1,10 @@
 import ea.*;
 public class Oktopus extends SPIELER
 {
-    public Oktopus()
+    public Oktopus(MODEL newm)
     {
-        PosX = 100;
-        PosY = 900;
+        super(newm);
         textur = new Figur(PosX,PosY,"Recources/Oktopus.eaf");
-        setChanged = true;
     }
 }
 

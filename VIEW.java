@@ -11,7 +11,8 @@ public class VIEW extends Game
         super(x, y);
         m = new MODEL(this,aBahn,x,y);
         c = new CONTROLLER(m,this); 
-        observables = new LinkedList();      
+        observables = new LinkedList();   
+        observables.add(m.getSpieler());
     }
     
     public void hinzufuegen(Raum obj)
@@ -20,7 +21,8 @@ public class VIEW extends Game
     }
 
     @Override
-    public void tasteReagieren(int code) {
+    public void tasteReagieren(int code) 
+    {
         c.taste(code);
     }
     
