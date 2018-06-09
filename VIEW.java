@@ -1,16 +1,17 @@
 import ea.*;
-import java.util.*;
+import java.util.LinkedList;
 
 public class VIEW extends Game 
 {
     private CONTROLLER c;
     private MODEL m;
-    private LinkedList obsearvables;
+    public LinkedList <OBJECT>observables;
 
-    public VIEW() {
-        super(1000, 1000);
-        m = new MODEL(this);
+    public VIEW(int aBahn, int x, int y) {
+        super(x, y);
+        m = new MODEL(this,aBahn,x,y);
         c = new CONTROLLER(m,this); 
+        observables = new LinkedList();      
     }
     
     public void hinzufuegen(Raum obj)
@@ -21,5 +22,24 @@ public class VIEW extends Game
     @Override
     public void tasteReagieren(int code) {
         c.taste(code);
+    }
+    
+    public void addObservable(OBJECT obj)
+    {
+        observables.add(obj);
+    }
+    
+    public void update()
+    {
+        for(int i = 0; i < observables.size(); i++)
+        {
+            OBJECT obj = observables.get(i);
+            if(obj.setChanged == true)
+            {
+                obj.getTexture().positionSetzen(obj.getPosX(),obj.getPosY());
+                obj.actionPerformed();
+                System.out.println("Changed");
+            }
+        }
     }
 }

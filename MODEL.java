@@ -3,16 +3,25 @@ public class MODEL
 {
     private VIEW v;
     public SPIELER spieler;
-    public MODEL(VIEW newv)
+    public BAHN[] bahnen;
+    public MODEL(VIEW newv,int aBahn,int x,int y)
     {
         v = newv;
+        bahnen = new BAHN[aBahn];
+        for(int i = 0; i < aBahn; i++)
+        {
+            bahnen[i] = new BAHN(i+1,aBahn,x,y);
+        }
         spieler = new Oktopus();
         v.hinzufuegen(spieler.textur);
+        v.addObservable(spieler);
     }
     
-    public void up()
+    public void tick()
     {
-        spieler.links();
+        for(int i = 0; i < bahnen.length; i++)
+        {
+        }
     }
 }
     

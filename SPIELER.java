@@ -1,27 +1,34 @@
 import ea.*;
-public abstract class SPIELER
+public abstract class SPIELER extends OBJECT
 {
     public Raum textur;
     public int breite;
     public int bahn;
-    public int posX;
-    public int posY;
     
     public void links()
     {
         bahn --;
-        posX -= 20;
+        PosX -= 20;
+        setChanged = true;
     }
+    
     public void rechts()
     {
         bahn ++;
-        posX += 20;
+        PosX += 20;
+        setChanged = true;
     }
     
     public int getbahn()
     {
         return bahn;
     }
+    
+    public Raum getTexture()
+    {
+        return textur;
+    }
+    
 }
 
     

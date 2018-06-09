@@ -9,7 +9,7 @@ public class CONTROLLER
     {
         m = newm;
         v = newv;
-        t = new CLOCK();
+        t = new CLOCK(m,v);
         v.manager.anmelden(t,1);
     }
     
