@@ -5,6 +5,7 @@ public class Kanu extends SPIELER
     {
         super(newm);
         textur = new Figur(PosX,PosY,"Recources/kanu.eaf");
+        textur.faktorSetzen(breite/25);
     }
 }
 
