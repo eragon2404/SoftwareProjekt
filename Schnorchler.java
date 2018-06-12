@@ -5,5 +5,6 @@ public class Schnorchler extends SPIELER
     {
         super(newm);
         textur = new Figur(PosX,PosY,"Recources/schnorchler.eaf");
+        textur.faktorSetzen(breite/25);
     }
 }

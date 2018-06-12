@@ -2,7 +2,7 @@ import java.util.LinkedList;
 public class BAHN
 {
     int index;
-    float breite;
+    int breite;
     float hoehe;
     float mitte;
     LinkedList<OBJECT> aktiv;

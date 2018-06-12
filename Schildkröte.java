@@ -5,5 +5,6 @@ public class Schildkröte extends SPIELER
     {
         super(newm);
         textur = new Figur(PosX,PosY,"Recources/schildkröte.eaf");
+        textur.faktorSetzen(breite/25);
     }
 }
