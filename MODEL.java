@@ -17,7 +17,7 @@ public class MODEL
         {
             bahnen[i] = new BAHN(i+1,aBahn,x,y);
         }
-        spieler = new Oktopus(this);
+        spieler = new Baumstamm(this);
         v.hinzufuegen(spieler.textur);
     }
     
