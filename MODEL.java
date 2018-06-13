@@ -17,7 +17,7 @@ public class MODEL
         {
             bahnen[i] = new BAHN(i+1,aBahn,x,y);
         }
-        spieler = new Baumstamm(this);
+        spieler = new Motorboot(this);
         v.hinzufuegen(spieler.textur);
     }
     
