@@ -4,11 +4,13 @@ public class CLOCK implements Ticker
     boolean running;
     MODEL m;
     VIEW v;
+    CONTROLLER c;
     
-    public CLOCK(MODEL newm,VIEW newv)
+    public CLOCK(MODEL newm,VIEW newv,CONTROLLER newc)
     {
         m = newm;
         v = newv;
+        c = newc;
         running = true;
     }
     
@@ -17,6 +19,7 @@ public class CLOCK implements Ticker
         if(running == true)
         {
             v.update();
+            c.tick();
         }
     }
     

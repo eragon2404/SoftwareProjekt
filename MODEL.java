@@ -37,5 +37,10 @@ public class MODEL
     {
         return x/bahnen.length;
     }
+    
+    public int getAbahnen()
+    {
+        return bahnen.length;
+    }
 }
     
