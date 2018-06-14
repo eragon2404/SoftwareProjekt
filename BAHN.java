@@ -12,7 +12,7 @@ public class BAHN
         index = newindex;
         hoehe = newhoehe;
         breite = gesbreite/(anzahl + 2);
-        mitte = (((((float)index*2)+1)/2) * (float)breite);
+        mitte = (((((float)index*2f)+1f)/2f) * (float)breite);
     }
     
     public void addOBJ(OBJECT obj)

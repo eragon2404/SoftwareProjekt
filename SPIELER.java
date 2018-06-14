@@ -2,7 +2,6 @@ import ea.*;
 public abstract class SPIELER extends OBJECT
 {
     public Figur textur;
-    public int breite;
     public int bahn;
     public MODEL m;
     
@@ -10,7 +9,6 @@ public abstract class SPIELER extends OBJECT
     {
         m = newm;
         bahn = (m.bahnen.length+1)/2;
-        this.breite = m.bahnen[0].breite;
         PosX = m.bahnen[bahn-1].getMitte();
         PosY = m.y - m.y/4;
         setChanged = true;
@@ -36,6 +34,11 @@ public abstract class SPIELER extends OBJECT
         }
     }
     
+    public int calcFaktor()
+    {
+        return (int)(m.getBreite()/60);
+    }
+    
     public int getbahn()
     {
         return bahn;
@@ -45,6 +48,7 @@ public abstract class SPIELER extends OBJECT
     {
         return textur;
     }
+    
     
 }
 

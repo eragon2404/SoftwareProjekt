@@ -4,7 +4,7 @@ import java.util.LinkedList;
 public class VIEW extends Game 
 {
     private CONTROLLER c;
-    private MODEL m;
+    public MODEL m;
     public LinkedList <OBJECT>observables;
 
     public VIEW(int aBahn, int x, int y) {
@@ -38,7 +38,7 @@ public class VIEW extends Game
             OBJECT obj = observables.get(i);
             if(obj.setChanged == true)
             {
-                obj.getTexture().positionSetzen(obj.getPosX(),obj.getPosY());
+                obj.getTexture().positionSetzen(obj.getPosX()-obj.getBreite()/2,obj.getPosY());
                 obj.actionPerformed();
                 System.out.println("Changed");
             }

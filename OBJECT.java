@@ -2,9 +2,10 @@ import ea.*;
 public abstract class OBJECT
 {
     public boolean setChanged;
-    private Raum Texture;
+    public Raum Texture;
     public float PosX;
     public float PosY;
+    public int breite;
     
     public Raum getTexture()
     {
@@ -28,5 +29,10 @@ public abstract class OBJECT
     public void actionPerformed()
     {
         setChanged = false;
+    }
+    
+        public int getBreite()
+    {
+        return breite;
     }
 }

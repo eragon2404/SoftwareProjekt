@@ -1,7 +1,7 @@
 import ea.*;
 public class MODEL
 {
-    private VIEW v;
+    public VIEW v;
     public SPIELER spieler;
     public BAHN[] bahnen;
     public int x;
@@ -31,6 +31,11 @@ public class MODEL
     public SPIELER getSpieler()
     {
         return spieler;
+    }
+    
+    public int getBreite()
+    {
+        return x/bahnen.length;
     }
 }
     
