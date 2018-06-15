@@ -28,6 +28,7 @@ public class CONTROLLER
     {
         if(calcTrue(chance) == true)
         {
+            
         }
         else
         {
@@ -55,6 +56,9 @@ public class CONTROLLER
             result.add(i);
         }
         float delCH = 1;
+        for(int i = 0; i < result.size();i++)
+        {
+        }
     }
 }
     
