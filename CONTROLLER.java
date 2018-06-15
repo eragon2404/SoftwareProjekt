@@ -60,6 +60,7 @@ public class CONTROLLER
         {
             if(calcTrue(delCH) == true)
             {
+                result.remove(new Random().nextInt(result.size()));
             }
         }
     }
