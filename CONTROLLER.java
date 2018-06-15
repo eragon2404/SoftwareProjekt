@@ -58,6 +58,9 @@ public class CONTROLLER
         float delCH = 1;
         for(int i = 0; i < result.size();i++)
         {
+            if(calcTrue(delCH) == true)
+            {
+            }
         }
     }
 }
