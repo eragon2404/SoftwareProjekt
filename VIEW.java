@@ -38,7 +38,7 @@ public class VIEW extends Game
             OBJECT obj = observables.get(i);
             if(obj.setChanged == true)
             {
-                obj.getTexture().positionSetzen(obj.getPosX()-obj.getBreite()/2,obj.getPosY());
+                obj.gettextur().positionSetzen(obj.getPosX()-obj.getBreite()/2,obj.getPosY());
                 obj.actionPerformed();
                 System.out.println("Changed");
             }

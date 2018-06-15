@@ -44,7 +44,7 @@ public abstract class SPIELER extends OBJECT
         return bahn;
     }
     
-    public Raum getTexture()
+    public Raum gettextur()
     {
         return textur;
     }
