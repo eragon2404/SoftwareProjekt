@@ -1,7 +1,7 @@
 import ea.*;
 public class MODEL
 {
-    private VIEW v;
+    public VIEW v;
     public SPIELER spieler;
     public BAHN[] bahnen;
     public int x;
@@ -17,7 +17,7 @@ public class MODEL
         {
             bahnen[i] = new BAHN(i+1,aBahn,x,y);
         }
-        spieler = new Oktopus(this);
+        spieler = new Motorboot(this);
         v.hinzufuegen(spieler.textur);
     }
     
@@ -31,6 +31,16 @@ public class MODEL
     public SPIELER getSpieler()
     {
         return spieler;
+    }
+    
+    public int getBreite()
+    {
+        return x/bahnen.length;
+    }
+    
+    public int getAbahnen()
+    {
+        return bahnen.length;
     }
 }
     
