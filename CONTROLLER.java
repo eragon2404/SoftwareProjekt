@@ -12,7 +12,7 @@ public class CONTROLLER
         m = newm;
         v = newv;
         t = new CLOCK(m,v,this);
-        v.manager.anmelden(t,1);
+        v.manager.anmelden(t,100);
         chance = 0;
     }
     
@@ -28,12 +28,13 @@ public class CONTROLLER
     {
         if(calcTrue(chance) == true)
         {
-            
+            chance = 0;
         }
         else
         {
             chance += 0.0001;
         }
+        System.out.println(chance);
     }
     
     private boolean calcTrue(float ch)
@@ -63,6 +64,21 @@ public class CONTROLLER
                 result.remove(new Random().nextInt(result.size()));
             }
         }
+        
+        for(int i = 0; i < result.size();i++)
+        {
+        }
+    }
+    
+    private void generateObject(int bahn)
+    {
+        try{
+            HINDERNISS obj = m.getHinderniss(new Random().nextInt(m.getLenHindernisse())).getClass().newInstance();
+            m.addHind(bahn,obj);
+            v.hinzufuegen(obj.gettextur());
+            v.addObservable(obj);
+        } catch(Exception e){}
+        System.out.println("Added");
     }
 }
     

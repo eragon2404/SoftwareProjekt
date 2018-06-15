@@ -4,6 +4,7 @@ public class MODEL
     public VIEW v;
     public SPIELER spieler;
     public BAHN[] bahnen;
+    public HINDERNISS[] hindernisse;
     public int x;
     public int y;
     
@@ -17,6 +18,8 @@ public class MODEL
         {
             bahnen[i] = new BAHN(i+1,aBahn,x,y);
         }
+        hindernisse = new HINDERNISS[1];
+        hindernisse[0] = new Fels(100,100);
         spieler = new Motorboot(this);
         v.hinzufuegen(spieler.textur);
     }
@@ -41,6 +44,21 @@ public class MODEL
     public int getAbahnen()
     {
         return bahnen.length;
+    }
+    
+    public int getLenHindernisse()
+    {
+        return hindernisse.length;
+    }
+    
+    public HINDERNISS getHinderniss(int i)
+    {
+        return hindernisse[i];
+    }
+    
+    public void addHind(int bahn, HINDERNISS hind)
+    {
+        bahnen[bahn].addOBJ(hind);
     }
 }
     

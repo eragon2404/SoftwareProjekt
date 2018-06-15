@@ -1,3 +1,3 @@
-[Wed Jun 13 17:58:48 CEST 2018][ERROR] Fehler beim Lesen der Datei. Existiert die Datei mit diesem Namen wirklich?
-C:\Users\Pascal\Documents\Alles\Informatik\11 Klasse\Softwareprojekt\Recources\schildkröte.eaf (DateiManager.java:678)
-[Wed Jun 13 17:58:48 CEST 2018][ERROR] Kritischer Fehler im Ticker: Eine Ausnahme wurde nicht abgefangen. Der Ticker wurde angehalten. Die folgende StackTrace sollte dir weitere Informationen liefern. (Manager.java:199)
+[Fri Jun 15 20:04:18 CEST 2018][ERROR] Fehler beim Lesen der Datei. Existiert die Datei mit diesem Namen wirklich?
+C:\Users\benni\Documents\BlueJ\Projekt\Recources\Fels.eaf (DateiManager.java:678)
+[Fri Jun 15 20:04:18 CEST 2018][ERROR] Kritischer Fehler im Ticker: Eine Ausnahme wurde nicht abgefangen. Der Ticker wurde angehalten. Die folgende StackTrace sollte dir weitere Informationen liefern. (Manager.java:199)
