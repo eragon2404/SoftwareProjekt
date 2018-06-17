@@ -8,9 +8,11 @@ public abstract class HINDERNISS extends OBJECT
         PosY = -(breite*20);
         setChanged = true;
     }
-    public void tick()
+    
+    public void tick(SPIELER spieler)
     {
-        PosY += 1;
+        PosY += 10;
         setChanged = true;
     }
+    
 }

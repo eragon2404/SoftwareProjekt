@@ -6,6 +6,8 @@ public class VIEW extends Game
     private CONTROLLER c;
     public MODEL m;
     public LinkedList <OBJECT>observables;
+    public int sx;
+    public int sy;
 
     public VIEW(int aBahn, int x, int y) {
         super(x, y);
@@ -13,6 +15,8 @@ public class VIEW extends Game
         c = new CONTROLLER(m,this); 
         observables = new LinkedList();   
         observables.add(m.getSpieler());
+        sx = x;
+        sy = y;
     }
     
     public void hinzufuegen(Raum obj)
@@ -37,10 +41,15 @@ public class VIEW extends Game
         {
             OBJECT obj = observables.get(i);
             if(obj.setChanged == true)
-            {
+            {               
                 obj.gettextur().positionSetzen(obj.getPosX()-obj.getBreite()/2,obj.getPosY());
                 obj.actionPerformed();
                 System.out.println("Changed");
+            }
+            if(obj.getPosY() > sy)
+            {
+                observables.remove(obj);
+                //wurzel.delete(obj);
             }
         }
     }

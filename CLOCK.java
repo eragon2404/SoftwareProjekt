@@ -20,6 +20,7 @@ public class CLOCK implements Ticker
         {
             v.update();
             c.tick();
+            m.tick();
         }
     }
     

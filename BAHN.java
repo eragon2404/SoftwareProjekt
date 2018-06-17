@@ -13,6 +13,7 @@ public class BAHN
         hoehe = newhoehe;
         breite = gesbreite/(anzahl + 2);
         mitte = (((((float)index*2f)+1f)/2f) * (float)breite);
+        aktiv = new LinkedList();
     }
     
     public void addOBJ(OBJECT obj)
@@ -31,5 +32,10 @@ public class BAHN
     public float getMitte()
     {
         return mitte;
+    }
+    
+    public int getBreite()
+    {
+        return breite;
     }
 }

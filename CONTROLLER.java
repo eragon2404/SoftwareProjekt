@@ -12,7 +12,7 @@ public class CONTROLLER
         m = newm;
         v = newv;
         t = new CLOCK(m,v,this);
-        v.manager.anmelden(t,100);
+        v.manager.anmelden(t,50);
         chance = 0;
     }
     
@@ -29,10 +29,11 @@ public class CONTROLLER
         if(calcTrue(chance) == true)
         {
             chance = 0;
+            calcObjects();
         }
         else
         {
-            chance += 0.0001;
+            chance += 0.0005;
         }
         System.out.println(chance);
     }
@@ -63,22 +64,30 @@ public class CONTROLLER
             {
                 result.remove(new Random().nextInt(result.size()));
             }
+            delCH /= 2;
         }
         
         for(int i = 0; i < result.size();i++)
         {
+            generateObject((int)result.get(i));
         }
     }
     
     private void generateObject(int bahn)
     {
-        try{
-            HINDERNISS obj = m.getHinderniss(new Random().nextInt(m.getLenHindernisse())).getClass().newInstance();
-            m.addHind(bahn,obj);
-            v.hinzufuegen(obj.gettextur());
-            v.addObservable(obj);
-        } catch(Exception e){}
-        System.out.println("Added");
+        int pX = (int)m.bahnen[bahn].getMitte();
+        int br = m.bahnen[bahn].getBreite();
+        switch(new Random().nextInt(1))
+        {
+            case 0:
+                HINDERNISS obj = new Fels(pX,br);
+                m.addHind(bahn,obj);
+                v.hinzufuegen(obj.gettextur());
+                v.addObservable(obj);
+                System.out.println("Fels Added");
+                System.out.println(bahn);
+                break;
+        }
     }
 }
     

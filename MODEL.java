@@ -28,6 +28,7 @@ public class MODEL
     {
         for(int i = 0; i < bahnen.length; i++)
         {
+            bahnen[i].check(spieler);
         }
     }
     
