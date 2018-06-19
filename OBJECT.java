@@ -2,12 +2,12 @@ import ea.*;
 public abstract class OBJECT
 {
     public boolean setChanged;
-    public Raum textur;
+    public Figur textur;
     public float PosX;
     public float PosY;
     public int breite;
     
-    public Raum gettextur()
+    public Figur gettextur()
     {
         return textur;
     }

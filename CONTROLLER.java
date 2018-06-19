@@ -64,7 +64,7 @@ public class CONTROLLER
             {
                 result.remove(new Random().nextInt(result.size()));
             }
-            delCH /= 2;
+            delCH /= 1.5;
         }
         
         for(int i = 0; i < result.size();i++)

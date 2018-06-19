@@ -1,7 +1,6 @@
 import ea.*;
 public abstract class HINDERNISS extends OBJECT
 {
-    public Figur textur;
     public HINDERNISS(int newPosX,int newBreite)
     {
         PosX = newPosX;

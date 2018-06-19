@@ -1,7 +1,6 @@
 import ea.*;
 public abstract class SPIELER extends OBJECT
 {
-    public Figur textur;
     public int bahn;
     public MODEL m;
     
@@ -43,12 +42,6 @@ public abstract class SPIELER extends OBJECT
     {
         return bahn;
     }
-    
-    public Raum gettextur()
-    {
-        return textur;
-    }
-    
     
 }
 
