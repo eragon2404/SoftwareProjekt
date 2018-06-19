@@ -77,7 +77,7 @@ public class CONTROLLER
     {
         int pX = (int)m.bahnen[bahn].getMitte();
         int br = m.bahnen[bahn].getBreite();
-        switch(new Random().nextInt(1))
+        switch(new Random().nextInt(3))
         {
             case 0:
                 HINDERNISS obj = new Fels(pX,br);
@@ -85,6 +85,22 @@ public class CONTROLLER
                 v.newMittelgrund(obj.gettextur());
                 v.addObservable(obj);
                 System.out.println("Fels Added");
+                System.out.println(bahn);
+                break;
+            case 1:
+                HINDERNISS obj2 = new Krokodil(pX,br);
+                m.addHind(bahn,obj2);
+                v.newMittelgrund(obj2.gettextur());
+                v.addObservable(obj2);
+                System.out.println("Krokodil Added");
+                System.out.println(bahn);
+                break;
+            case 2:
+                HINDERNISS obj3 = new Treibholz(pX,br);
+                m.addHind(bahn,obj3);
+                v.newMittelgrund(obj3.gettextur());
+                v.addObservable(obj3);
+                System.out.println("Treibholz Added");
                 System.out.println(bahn);
                 break;
         }
