@@ -5,7 +5,8 @@ public class Oktopus extends SPIELER
     {
         super(newm);
         textur = new Figur(PosX,PosY,"Recources/Oktopus.eaf");
-        textur.faktorSetzen(breite/25);
+        breite = 20 * calcFaktor();  
+        textur.faktorSetzen(calcFaktor());
     }
 }
 

@@ -5,6 +5,7 @@ public class Schildkroete extends SPIELER
     {
         super(newm);
         textur = new Figur(PosX,PosY,"Recources/schildkroete.eaf");
-        textur.faktorSetzen(breite/25);
+        breite = 20 * calcFaktor();  
+        textur.faktorSetzen(calcFaktor());
     }
 }

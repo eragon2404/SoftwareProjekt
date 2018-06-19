@@ -5,5 +5,7 @@ public class Jetski extends SPIELER
     {
         super(newm);
         textur = new Figur(PosX,PosY,"Recources/jetski.eaf");
+        breite = 20 * calcFaktor();  
+        textur.faktorSetzen(calcFaktor());
     }
 }
