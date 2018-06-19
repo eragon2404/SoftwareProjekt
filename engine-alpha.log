@@ -1,1 +1,4 @@
-[Sun Jun 17 15:30:16 CEST 2018][ERROR] Kritischer Fehler im Ticker: Eine Ausnahme wurde nicht abgefangen. Der Ticker wurde angehalten. Die folgende StackTrace sollte dir weitere Informationen liefern. (Manager.java:199)
+[Tue Jun 19 11:16:38 CEST 2018][ERROR] Fehler beim Lesen der Datei. Existiert die Datei mit diesem Namen wirklich?
+H:\Informatik\Projekt_neu\Recources\Krokodil2.eaf (DateiManager.java:678)
+[Tue Jun 19 11:16:38 CEST 2018][ERROR] Kritischer Fehler im Ticker: Eine Ausnahme wurde nicht abgefangen. Der Ticker wurde angehalten. Die folgende StackTrace sollte dir weitere Informationen liefern. (Manager.java:217)
+[Tue Jun 19 11:16:38 CEST 2018][ERROR] Kritischer Fehler im Ticker: Eine Ausnahme wurde nicht abgefangen. Der Ticker wurde angehalten. Die folgende StackTrace sollte dir weitere Informationen liefern. (Manager.java:217)

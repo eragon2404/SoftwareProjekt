@@ -14,8 +14,6 @@ public class VIEW extends Game
 
     public VIEW(int aBahn, int x, int y) {
         super(x, y);
-        m = new MODEL(this,aBahn,x,y);
-        c = new CONTROLLER(m,this); 
         observables = new LinkedList();   
         Hintergrund = new Knoten();
         Mittelgrund = new Knoten();
@@ -23,9 +21,11 @@ public class VIEW extends Game
         wurzel.add(Hintergrund);
         wurzel.add(Mittelgrund);
         wurzel.add(Vordergrund);
-        observables.add(m.getSpieler());
         sx = x;
         sy = y;
+        m = new MODEL(this,aBahn,x,y);
+        c = new CONTROLLER(m,this); 
+        observables.add(m.getSpieler());
     }
     
     public void newHintergrund(Raum obj)
