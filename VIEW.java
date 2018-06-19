@@ -8,20 +8,39 @@ public class VIEW extends Game
     public LinkedList <OBJECT>observables;
     public int sx;
     public int sy;
+    public Knoten Hintergrund;
+    public Knoten Mittelgrund;
+    public Knoten Vordergrund;
 
     public VIEW(int aBahn, int x, int y) {
         super(x, y);
         m = new MODEL(this,aBahn,x,y);
         c = new CONTROLLER(m,this); 
         observables = new LinkedList();   
+        Hintergrund = new Knoten();
+        Mittelgrund = new Knoten();
+        Vordergrund = new Knoten();
+        wurzel.add(Hintergrund);
+        wurzel.add(Mittelgrund);
+        wurzel.add(Vordergrund);
         observables.add(m.getSpieler());
         sx = x;
         sy = y;
     }
     
-    public void hinzufuegen(Raum obj)
+    public void newHintergrund(Raum obj)
     {
-        wurzel.add(obj);
+        Hintergrund.add(obj);
+    }
+    
+    public void newMittelgrund(Raum obj)
+    {
+        Mittelgrund.add(obj);
+    }
+    
+    public void newVordergrund(Raum obj)
+    {
+        Vordergrund.add(obj);
     }
 
     @Override

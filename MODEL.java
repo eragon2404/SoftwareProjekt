@@ -21,7 +21,7 @@ public class MODEL
         hindernisse = new HINDERNISS[1];
         hindernisse[0] = new Fels(100,100);
         spieler = new Motorboot(this);
-        v.hinzufuegen(spieler.textur);
+        v.newMittelgrund(spieler.textur);
     }
     
     public void tick()

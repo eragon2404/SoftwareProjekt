@@ -82,7 +82,7 @@ public class CONTROLLER
             case 0:
                 HINDERNISS obj = new Fels(pX,br);
                 m.addHind(bahn,obj);
-                v.hinzufuegen(obj.gettextur());
+                v.newMittelgrund(obj.gettextur());
                 v.addObservable(obj);
                 System.out.println("Fels Added");
                 System.out.println(bahn);
