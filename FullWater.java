@@ -10,7 +10,7 @@ public class FullWater
         int sx = (aBahn -2)*breite;
         int sy = hoehe;
         textur = new Rechteck(x,y,sx,sy);
-        textur.farbeSetzen(new Farbe();
+        textur.farbeSetzen(new Farbe(1,1,1));
         v.newHintergrund(textur);
     }
 }
