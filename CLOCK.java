@@ -25,7 +25,7 @@ public class CLOCK implements Ticker
             m.tick();
             b.tick();
         }
-    }
+   }
     
     public void start()
     {
