@@ -6,8 +6,8 @@ public class WASSER extends OBJECT
         breite = newbreite;
         PosX = (bahn*breite) - (float)(0.5*breite);
         PosY = -breite;
-        textur = new Figur(PosX,PosY,"Recources/Treibholz.eaf");
-        textur.faktorSetzen(breite/20);
+        textur = new Figur(PosX,PosY,"Recources/DasperfekteWasser.eaf");
+        textur.faktorSetzen(breite/16);
         setChanged = true;
     }
     

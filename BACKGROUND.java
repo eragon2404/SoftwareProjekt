@@ -31,7 +31,7 @@ public class BACKGROUND
                 objects.remove(obj);
             }
         }
-        if(lastY.getPosY() >= 0)
+        if(lastY.getPosY() >= -4)
         {
             newRow();
         }

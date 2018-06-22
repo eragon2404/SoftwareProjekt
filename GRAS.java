@@ -7,7 +7,7 @@ public class GRAS extends OBJECT
         PosX = (bahn*breite) - (float)(0.5*breite);
         PosY = -breite;
         textur = new Figur(PosX,PosY,"Recources/Gras1.eaf");
-        textur.faktorSetzen(breite/20);
+        textur.faktorSetzen(breite/16);
         setChanged = true;
     }
     
