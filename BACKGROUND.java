@@ -8,6 +8,8 @@ public class BACKGROUND
     OBJECT lastY;
     float velo;
     LinkedList<OBJECT> objects;
+    FullWater w;
+    
     public BACKGROUND(int newbahnen, int newbreite, VIEW newv, int newy)
     {
         bahnen = newbahnen +2;
@@ -17,6 +19,7 @@ public class BACKGROUND
         objects = new LinkedList();
         newRow();
         y = newy;
+        w = new FullWater(bahnen,breite,y,v);
     }
     
     public void tick()
@@ -46,14 +49,15 @@ public class BACKGROUND
             if(i == 0 || i == bahnen-1)
             {
                 obj = new GRAS(i+1,breite);
+                objects.add(obj);
+                v.addObservable0(obj);
+                v.newHintergrund(obj.gettextur());
             }
             else
             {
-                obj = new WASSER(i+1,breite);
+                //obj = new WASSER(i+1,breite);
             }
-            objects.add(obj);
-            v.addObservable0(obj);
-            v.newHintergrund(obj.gettextur());
+            
         }
         lastY = objects.getLast();
     }
