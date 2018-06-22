@@ -5,12 +5,14 @@ public class CLOCK implements Ticker
     MODEL m;
     VIEW v;
     CONTROLLER c;
+    BACKGROUND b;
     
-    public CLOCK(MODEL newm,VIEW newv,CONTROLLER newc)
+    public CLOCK(MODEL newm,VIEW newv,CONTROLLER newc,BACKGROUND newb)
     {
         m = newm;
         v = newv;
         c = newc;
+        b = newb;
         running = true;
     }
     
@@ -21,6 +23,7 @@ public class CLOCK implements Ticker
             v.update();
             c.tick();
             m.tick();
+            b.tick();
         }
     }
     

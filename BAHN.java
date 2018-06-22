@@ -5,7 +5,7 @@ public class BAHN
     int breite;
     float hoehe;
     float mitte;
-    LinkedList<OBJECT> aktiv;
+    LinkedList<HINDERNISS> aktiv;
     
     public BAHN(int newindex, int anzahl, int gesbreite, int newhoehe)
     {
@@ -16,7 +16,7 @@ public class BAHN
         aktiv = new LinkedList();
     }
     
-    public void addOBJ(OBJECT obj)
+    public void addOBJ(HINDERNISS obj)
     {
         aktiv.add(obj);
     }
@@ -25,7 +25,12 @@ public class BAHN
     {
         for(int i = 0; i < aktiv.size(); i++)
         {
-            aktiv.get(i).tick(spieler);
+            OBJECT obj = aktiv.get(i);
+            obj.tick();
+            if(obj.getPosY() > hoehe)
+            {
+                aktiv.remove(obj);
+            }
         }
     }
     

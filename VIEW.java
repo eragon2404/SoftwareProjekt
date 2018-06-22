@@ -5,27 +5,43 @@ public class VIEW extends Game
 {
     private CONTROLLER c;
     public MODEL m;
-    public LinkedList <OBJECT>observables;
-    public int sx;
-    public int sy;
+    public LinkedList <OBJECT>observables1;
+    public LinkedList <OBJECT>observables0;
     public Knoten Hintergrund;
     public Knoten Mittelgrund;
     public Knoten Vordergrund;
+    int sx;
+    int sy;
+    
 
-    public VIEW(int aBahn, int x, int y) {
-        super(x, y);
-        observables = new LinkedList();   
+    public VIEW(int aBahn, CONTROLLER newc) {
+        super(1000,1000,"Flipinity");
+        observables1 = new LinkedList();
+        observables0 = new LinkedList();   
         Hintergrund = new Knoten();
         Mittelgrund = new Knoten();
         Vordergrund = new Knoten();
         wurzel.add(Hintergrund);
         wurzel.add(Mittelgrund);
         wurzel.add(Vordergrund);
-        sx = x;
-        sy = y;
-        m = new MODEL(this,aBahn,x,y);
-        c = new CONTROLLER(m,this); 
-        observables.add(m.getSpieler());
+        BoundingRechteck Fenster = fensterGroesse();
+        sx = (int)Fenster.breite;
+        sy = (int)Fenster.hoehe;
+        c = newc; 
+    }
+    
+    public void setModel(MODEL newM)
+    {
+        m = newM;
+    }
+    
+    public int getSX()
+    {
+        return sx;
+    }
+    public int getSY()
+    {
+        return sy;
     }
     
     public void newHintergrund(Raum obj)
@@ -42,6 +58,35 @@ public class VIEW extends Game
     {
         Vordergrund.add(obj);
     }
+    
+    public void delHintergrund(OBJECT obj)
+    {
+        Hintergrund.entfernen(obj.gettextur());
+        observables0.remove(obj);
+    }
+    
+    public void delMittelgrund(OBJECT obj)
+    {
+        Mittelgrund.entfernen(obj.gettextur());
+        observables1.remove(obj);
+    }
+    
+    public void delVordergrund(Raum obj)
+    {
+        Vordergrund.entfernen(obj);
+    }
+    
+    public void clearHintergrund()
+    {
+        observables0.clear();
+        Hintergrund.leeren();
+    }
+    
+    public void clearMittelgrund()
+    {
+        observables1.clear();
+        Mittelgrund.leeren();
+    }
 
     @Override
     public void tasteReagieren(int code) 
@@ -49,16 +94,21 @@ public class VIEW extends Game
         c.taste(code);
     }
     
+    public void addObservable0(OBJECT obj)
+    {
+        observables0.add(obj);
+    }
+    
     public void addObservable(OBJECT obj)
     {
-        observables.add(obj);
+        observables1.add(obj);
     }
     
     public void update()
     {
-        for(int i = 0; i < observables.size(); i++)
+        for(int i = 0; i < observables1.size(); i++)
         {
-            OBJECT obj = observables.get(i);
+            OBJECT obj = observables1.get(i);
             if(obj.setChanged == true)
             {               
                 obj.gettextur().positionSetzen(obj.getPosX()-obj.getBreite()/2,obj.getPosY());
@@ -67,9 +117,24 @@ public class VIEW extends Game
             }
             if(obj.getPosY() > sy)
             {
-                observables.remove(obj);
-                //wurzel.delete(obj);
+                delMittelgrund(obj);
             }
         }
+        
+        for(int i = 0; i < observables0.size(); i++)
+        {
+            OBJECT obj = observables0.get(i);
+            if(obj.setChanged == true)
+            {               
+                obj.gettextur().positionSetzen(obj.getPosX()-obj.getBreite()/2,obj.getPosY());
+                obj.actionPerformed();
+                System.out.println("Changed");
+            }
+        }
+    }
+    
+    public void terminate()
+    {
+        this.schliessen();
     }
 }

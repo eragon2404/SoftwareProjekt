@@ -2,18 +2,44 @@ import ea.*;
 import java.util.*;
 public class CONTROLLER
 {
+    public static void main(String[] args)
+    {
+        new CONTROLLER();
+    }
     MODEL m;
     VIEW v;
     CLOCK t;
+    BACKGROUND b;
     float chance;
     
-    public CONTROLLER(MODEL newm, VIEW newv)
+    public CONTROLLER()
     {
-        m = newm;
-        v = newv;
-        t = new CLOCK(m,v,this);
+        v = new VIEW(5,this);
+        m = new MODEL(5,v.getSX(),v.getSY());
+        b = new BACKGROUND(5,v.getSX(),v,v.getSY());
+        t = new CLOCK(m,v,this,b);
         v.manager.anmelden(t,50);
         chance = 0;
+        SPIELER s = new Motorboot(m);
+        v.addObservable(s);
+        v.newMittelgrund(s.gettextur());
+        m.newSpieler(s);
+    }
+    
+    public void restart(int aBahn)
+    {
+        v.terminate();
+        v = new VIEW(aBahn,this);
+        m = new MODEL(5,v.getSX(),v.getSY());
+    }
+        
+    
+    public void newSpieler(SPIELER s)
+    {
+        v.clearMittelgrund();
+        v.addObservable(s);
+        v.newMittelgrund(s.gettextur());
+        m.newSpieler(s);
     }
     
     public void taste(int code)
@@ -33,7 +59,7 @@ public class CONTROLLER
         }
         else
         {
-            chance += 0.0005;
+            chance += 0.0008;
         }
         System.out.println(chance);
     }
@@ -77,7 +103,7 @@ public class CONTROLLER
     {
         int pX = (int)m.bahnen[bahn].getMitte();
         int br = m.bahnen[bahn].getBreite();
-        switch(new Random().nextInt(3))
+        switch(new Random().nextInt(2))
         {
             case 0:
                 HINDERNISS obj = new Fels(pX,br);
@@ -87,7 +113,7 @@ public class CONTROLLER
                 System.out.println("Fels Added");
                 System.out.println(bahn);
                 break;
-            case 1:
+            case 2:
                 HINDERNISS obj2 = new Krokodil(pX,br);
                 m.addHind(bahn,obj2);
                 v.newMittelgrund(obj2.gettextur());
@@ -95,7 +121,7 @@ public class CONTROLLER
                 System.out.println("Krokodil Added");
                 System.out.println(bahn);
                 break;
-            case 2:
+            case 1:
                 HINDERNISS obj3 = new Treibholz(pX,br);
                 m.addHind(bahn,obj3);
                 v.newMittelgrund(obj3.gettextur());

@@ -1,16 +1,14 @@
 import ea.*;
 public class MODEL
 {
-    public VIEW v;
     public SPIELER spieler;
     public BAHN[] bahnen;
     public HINDERNISS[] hindernisse;
     public int x;
     public int y;
     
-    public MODEL(VIEW newv,int aBahn,int nx,int ny)
+    public MODEL(int aBahn,int nx,int ny)
     {
-        v = newv;
         bahnen = new BAHN[aBahn];
         x = nx;
         y = ny;
@@ -20,8 +18,6 @@ public class MODEL
         }
         hindernisse = new HINDERNISS[1];
         hindernisse[0] = new Fels(100,100);
-        spieler = new Motorboot(this);
-        v.newMittelgrund(spieler.textur);
     }
     
     public void tick()
@@ -39,7 +35,7 @@ public class MODEL
     
     public int getBreite()
     {
-        return x/bahnen.length;
+        return x/(bahnen.length+2);
     }
     
     public int getAbahnen()
@@ -61,5 +57,11 @@ public class MODEL
     {
         bahnen[bahn].addOBJ(hind);
     }
+    
+    public void newSpieler(SPIELER newSp)
+    {
+        spieler = newSp;
+    }
+        
 }
     

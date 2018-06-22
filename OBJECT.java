@@ -22,7 +22,7 @@ public abstract class OBJECT
         return PosY;
     }
     
-    public void tick(SPIELER spieler)
+    public void tick()
     {
     }
     
