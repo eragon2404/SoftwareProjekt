@@ -10,7 +10,9 @@ public class CONTROLLER
     VIEW v;
     CLOCK t;
     BACKGROUND b;
+    SPIELER s;
     float chance;
+    float score;
     
     public CONTROLLER()
     {
@@ -20,7 +22,8 @@ public class CONTROLLER
         t = new CLOCK(m,v,this,b);
         v.manager.anmelden(t,50);
         chance = 0;
-        SPIELER s = new Motorboot(m);
+        score = 0;
+        s = choose();
         v.addObservable(s);
         v.newMittelgrund(s.gettextur());
         m.newSpieler(s);
@@ -33,6 +36,28 @@ public class CONTROLLER
         m = new MODEL(5,v.getSX(),v.getSY());
     }
         
+    public SPIELER choose()
+    {
+        switch(new Random().nextInt(7))
+        {
+            case 0:
+                return new Baumstamm(m);
+            case 1:
+                return new Motorboot(m);
+            case 2:
+                return new Jetski(m);
+            case 3:
+                return new Oktopus(m);
+            case 4:
+                return new Kanu(m);
+            case 5:
+                return new Schildkroete(m);
+            case 6:
+                return new Schnorchler(m);
+            default:
+                return null;
+        }
+    }
     
     public void newSpieler(SPIELER s)
     {
@@ -52,6 +77,9 @@ public class CONTROLLER
     
     public void tick()
     {
+        s.tick();
+        score += 0.1;
+        v.setScore(score);
         if(calcTrue(chance) == true)
         {
             chance = 0;

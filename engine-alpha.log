@@ -1,0 +1,4 @@
+[Sun Jun 24 14:51:28 CEST 2018][ERROR] Fehler beim Lesen der Datei. Existiert die Datei mit diesem Namen wirklich?
+C:\Users\benni\Documents\BlueJ\Projekt\Recources\schildkroete.eaf (DateiManager.java:678)
+[Sun Jun 24 14:51:28 CEST 2018][ERROR] Kritischer Fehler im Ticker: Eine Ausnahme wurde nicht abgefangen. Der Ticker wurde angehalten. Die folgende StackTrace sollte dir weitere Informationen liefern. (Manager.java:199)
+[Sun Jun 24 14:51:28 CEST 2018][ERROR] Kritischer Fehler im Ticker: Eine Ausnahme wurde nicht abgefangen. Der Ticker wurde angehalten. Die folgende StackTrace sollte dir weitere Informationen liefern. (Manager.java:199)

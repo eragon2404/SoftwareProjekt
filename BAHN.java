@@ -25,8 +25,8 @@ public class BAHN
     {
         for(int i = 0; i < aktiv.size(); i++)
         {
-            OBJECT obj = aktiv.get(i);
-            obj.tick();
+            HINDERNISS obj = aktiv.get(i);
+            obj.tick(spieler);
             if(obj.getPosY() > hoehe)
             {
                 aktiv.remove(obj);

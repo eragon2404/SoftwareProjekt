@@ -3,12 +3,14 @@ public abstract class SPIELER extends OBJECT
 {
     public int bahn;
     public MODEL m;
+    public float goToX;
     
     public SPIELER(MODEL newm)
     {
         m = newm;
         bahn = (m.bahnen.length+1)/2;
         PosX = m.bahnen[bahn-1].getMitte();
+        goToX = PosX;
         PosY = m.y - m.y/4;
         setChanged = true;
     }
@@ -18,8 +20,7 @@ public abstract class SPIELER extends OBJECT
         if(bahn > 1)
         {
             bahn --;
-            PosX = m.bahnen[bahn-1].getMitte();
-            setChanged = true;
+            goToX = m.bahnen[bahn-1].getMitte();
         }
     }
     
@@ -28,7 +29,20 @@ public abstract class SPIELER extends OBJECT
         if(bahn < m.bahnen.length)
         {
             bahn ++;
-            PosX = m.bahnen[bahn-1].getMitte();
+            goToX = m.bahnen[bahn-1].getMitte();
+        }
+    }
+    
+    public void tick()
+    {
+        if(PosX - goToX > 10)
+        {
+            PosX -= 20;
+            setChanged = true;
+        }
+        else if(PosX - goToX < -10)
+        {
+            PosX += 20;
             setChanged = true;
         }
     }

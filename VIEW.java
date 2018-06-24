@@ -12,10 +12,10 @@ public class VIEW extends Game
     public Knoten Vordergrund;
     int sx;
     int sy;
-    
+    Text SC;
 
     public VIEW(int aBahn, CONTROLLER newc) {
-        super(1000,1000,"Flipinity");
+        super(1000,1000,"Filipinity");
         observables1 = new LinkedList();
         observables0 = new LinkedList();   
         Hintergrund = new Knoten();
@@ -28,6 +28,13 @@ public class VIEW extends Game
         sx = (int)Fenster.breite;
         sy = (int)Fenster.hoehe;
         c = newc; 
+        SC = new Text("0",sx-sx/10,sy/10);
+        newVordergrund(SC);
+    }
+    
+    public void setScore(float wert)
+    {
+        SC.inhaltSetzen(Integer.toString((int)wert));
     }
     
     public void setModel(MODEL newM)
