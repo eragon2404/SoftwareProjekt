@@ -4,8 +4,9 @@ public abstract class SPIELER extends OBJECT
     public int bahn;
     public MODEL m;
     public float goToX;
+    public CONTROLLER c;
     
-    public SPIELER(MODEL newm)
+    public SPIELER(MODEL newm,CONTROLLER newc)
     {
         m = newm;
         bahn = (m.bahnen.length+1)/2;
@@ -13,6 +14,12 @@ public abstract class SPIELER extends OBJECT
         goToX = PosX;
         PosY = m.y - m.y/4;
         setChanged = true;
+        c = newc;
+    }
+    
+    public void collision()
+    {
+        c.collision();
     }
     
     public void links()
@@ -49,7 +56,7 @@ public abstract class SPIELER extends OBJECT
     
     public int calcFaktor()
     {
-        return (int)(m.getBreite()/60);
+        return (int)(m.getBreite()/30);
     }
     
     public int getbahn()

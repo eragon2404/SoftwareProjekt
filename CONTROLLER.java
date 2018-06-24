@@ -16,9 +16,10 @@ public class CONTROLLER
     
     public CONTROLLER()
     {
-        v = new VIEW(5,this);
-        m = new MODEL(5,v.getSX(),v.getSY());
-        b = new BACKGROUND(5,v.getSX(),v,v.getSY());
+        v = new VIEW(this);
+        int aB = Integer.parseInt(v.eingabeFordern("Anzahl Bahnen"));
+        m = new MODEL(aB,v.getSX(),v.getSY());
+        b = new BACKGROUND(aB,v.getSX(),v,v.getSY());
         t = new CLOCK(m,v,this,b);
         v.manager.anmelden(t,50);
         chance = 0;
@@ -32,8 +33,8 @@ public class CONTROLLER
     public void restart(int aBahn)
     {
         v.terminate();
-        v = new VIEW(aBahn,this);
-        m = new MODEL(5,v.getSX(),v.getSY());
+        v = new VIEW(this);
+        m = new MODEL(aBahn,v.getSX(),v.getSY());
     }
         
     public SPIELER choose()
@@ -41,19 +42,19 @@ public class CONTROLLER
         switch(new Random().nextInt(7))
         {
             case 0:
-                return new Baumstamm(m);
+                return new Baumstamm(m,this);
             case 1:
-                return new Motorboot(m);
+                return new Motorboot(m,this);
             case 2:
-                return new Jetski(m);
+                return new Jetski(m,this);
             case 3:
-                return new Oktopus(m);
+                return new Oktopus(m,this);
             case 4:
-                return new Kanu(m);
+                return new Kanu(m,this);
             case 5:
-                return new Schildkroete(m);
+                return new Schildkroete(m,this);
             case 6:
-                return new Schnorchler(m);
+                return new Schnorchler(m,this);
             default:
                 return null;
         }
@@ -90,6 +91,11 @@ public class CONTROLLER
             chance += 0.0008;
         }
         System.out.println(chance);
+    }
+    
+    public void collision()
+    {
+        t.stop();
     }
     
     private boolean calcTrue(float ch)

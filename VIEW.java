@@ -14,7 +14,7 @@ public class VIEW extends Game
     int sy;
     Text SC;
 
-    public VIEW(int aBahn, CONTROLLER newc) {
+    public VIEW(CONTROLLER newc) {
         super(1000,1000,"Filipinity");
         observables1 = new LinkedList();
         observables0 = new LinkedList();   
@@ -120,7 +120,6 @@ public class VIEW extends Game
             {               
                 obj.gettextur().positionSetzen(obj.getPosX()-obj.getBreite()/2,obj.getPosY());
                 obj.actionPerformed();
-                System.out.println("Changed");
             }
             if(obj.getPosY() > sy)
             {
@@ -135,7 +134,6 @@ public class VIEW extends Game
             {               
                 obj.gettextur().positionSetzen(obj.getPosX()-obj.getBreite()/2,obj.getPosY());
                 obj.actionPerformed();
-                System.out.println("Changed");
             }
         }
     }
