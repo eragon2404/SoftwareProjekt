@@ -5,7 +5,7 @@ public class Baumstamm extends SPIELER
     {
         super(newm,newc);
         textur = new Figur(PosX,PosY,"Recources/baumstamm.eaf");
-        breite = 20 * calcFaktor();  
+        breite = 15 * calcFaktor();  
         textur.faktorSetzen(calcFaktor());
     }
 }

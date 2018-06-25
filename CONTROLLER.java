@@ -13,6 +13,7 @@ public class CONTROLLER
     SPIELER s;
     float chance;
     float score;
+    int player;
     
     public CONTROLLER()
     {
@@ -24,7 +25,8 @@ public class CONTROLLER
         v.manager.anmelden(t,50);
         chance = 0;
         score = 0;
-        s = choose();
+        player = new Random().nextInt(7);
+        s = choose(player);
         v.addObservable(s);
         v.newMittelgrund(s.gettextur());
         m.newSpieler(s);
@@ -37,9 +39,9 @@ public class CONTROLLER
         m = new MODEL(aBahn,v.getSX(),v.getSY());
     }
         
-    public SPIELER choose()
+    public SPIELER choose(int p)
     {
-        switch(new Random().nextInt(7))
+        switch(p)
         {
             case 0:
                 return new Baumstamm(m,this);
@@ -70,27 +72,53 @@ public class CONTROLLER
     
     public void taste(int code)
     {
-        switch(code) {
-            case Taste.RECHTS: m.spieler.rechts(); break;
-            case Taste.LINKS:  m.spieler.links(); break;
+        if(t.getRunning() == true)
+        {
+            switch(code) {
+                case Taste.RECHTS: m.spieler.rechts(); break;
+                case Taste.LINKS:  m.spieler.links(); break;
+            }
+        }
+        else
+        {           
+            switch(code) {
+                case Taste.RECHTS: 
+                    if(player < 7)
+                    {
+                        player += 1;
+                        s.getOut();
+                        newSpieler(choose(player));
+                    }
+                    break;
+                case Taste.LINKS:
+                    if(player < 7)
+                    {
+                        player += 1;
+                        newSpieler(choose(player));
+                    }
+                    break;
+            }
         }
     }
     
     public void tick()
     {
         s.tick();
-        score += 0.1;
-        v.setScore(score);
-        if(calcTrue(chance) == true)
+        if(t.getRunning() == true)
         {
-            chance = 0;
-            calcObjects();
+            score += 0.1;
+            v.setScore(score);
+            if(calcTrue(chance) == true)
+            {
+                chance = 0;
+                calcObjects();
+            }
+            else
+            {
+                chance += 0.0008;
+            }
+            System.out.println(chance);
         }
-        else
-        {
-            chance += 0.0008;
-        }
-        System.out.println(chance);
     }
     
     public void collision()

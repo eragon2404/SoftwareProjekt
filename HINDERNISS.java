@@ -4,8 +4,8 @@ public abstract class HINDERNISS extends OBJECT
     public HINDERNISS(int newPosX,int newBreite)
     {
         PosX = newPosX;
-        breite = (int)newBreite/40;
-        PosY = -(breite*20);
+        breite = newBreite/2;
+        PosY = -(breite);
         setChanged = true;
     }
     

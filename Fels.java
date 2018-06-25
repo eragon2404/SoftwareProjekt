@@ -5,6 +5,6 @@ public class Fels extends HINDERNISS
     {
         super(newPosX,newBreite);
         textur = new Figur(PosX,PosY,"Recources/Felsen.eaf");
-        textur.faktorSetzen(breite);
+        textur.faktorSetzen(breite/20);
     }
 }

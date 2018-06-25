@@ -10,11 +10,20 @@ public abstract class SPIELER extends OBJECT
     {
         m = newm;
         bahn = (m.bahnen.length+1)/2;
-        PosX = m.bahnen[bahn-1].getMitte();
-        goToX = PosX;
+        PosX = -m.getBreite();
+        goToX = m.bahnen[bahn-1].getMitte();
         PosY = m.y - m.y/4;
         setChanged = true;
         c = newc;
+    }
+    
+    public void getOut()
+    {
+        while(PosX < m.getAbahnen() * m.getBreite())
+        {
+            PosX += 10;
+            textur.positionSetzen(PosX,PosY);
+        }
     }
     
     public void collision()
@@ -56,7 +65,7 @@ public abstract class SPIELER extends OBJECT
     
     public int calcFaktor()
     {
-        return (int)(m.getBreite()/30);
+        return (int)(m.getBreite()/40);
     }
     
     public int getbahn()

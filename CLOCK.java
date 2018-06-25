@@ -1,7 +1,8 @@
 import ea.*;
 public class CLOCK implements Ticker
 {
-    boolean running;
+    boolean Allrunning;
+    boolean Backrunning;
     MODEL m;
     VIEW v;
     CONTROLLER c;
@@ -13,32 +14,39 @@ public class CLOCK implements Ticker
         v = newv;
         c = newc;
         b = newb;
-        running = true;
+        Allrunning = false;
+        Backrunning = true;
     }
     
     public void tick()
     {
-        if(running == true)
+        if(Allrunning == true)
         {
             v.update();
             c.tick();
             m.tick();
             b.tick();
         }
+        else if(Backrunning == true)
+        {
+            b.tick();
+            v.update();
+            c.tick();
+        }
    }
     
     public void start()
     {
-        running = true;
+        Allrunning = true;
     }
     
     public void stop()
     {
-        running = false;
+        Allrunning = false;
     }
     
     public boolean getRunning()
     {
-        return running;
+        return Allrunning;
     }
 }

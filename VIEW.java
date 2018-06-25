@@ -28,7 +28,7 @@ public class VIEW extends Game
         sx = (int)Fenster.breite;
         sy = (int)Fenster.hoehe;
         c = newc; 
-        SC = new Text("0",sx-sx/10,sy/10);
+        SC = new Text("0",sx-sx/5,sy/5);
         newVordergrund(SC);
     }
     

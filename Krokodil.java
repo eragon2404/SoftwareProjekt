@@ -5,6 +5,6 @@ public class Krokodil extends HINDERNISS
     {
         super(newPosX,newBreite);
         textur = new Figur(PosX,PosY,"Recources/Krokodil.eaf");
-        //textur.faktorSetzen(breite);
+        textur.faktorSetzen(breite/20);
     }
 }
