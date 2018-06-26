@@ -12,7 +12,8 @@ public class MAUS
       Punkt hotspot = new Punkt(3,3);
       boolean absolut = false;
       boolean bewegend = false;
-      Maus maus = new Maus(mausbild, hotspot);
+      //Maus maus = new Maus(mausbild, hotspot);
+      System.out.println("HI");
       
   }
   
