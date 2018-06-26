@@ -122,7 +122,7 @@ public class CONTROLLER
             }
             else
             {
-                chance *= 2;
+                chance *= 1.2;
             }
             System.out.println(chance);
         }
