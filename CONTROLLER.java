@@ -58,7 +58,7 @@ public class CONTROLLER
             case 6:
                 return new Schnorchler(m,this);
             default:
-                return null;
+                return new Baumstamm(m,this);
         }
     }
     
@@ -96,6 +96,9 @@ public class CONTROLLER
                         player += 1;
                         newSpieler(choose(player));
                     }
+                    break;
+                case Taste.ENTER:
+                    t.start();
                     break;
             }
         }
