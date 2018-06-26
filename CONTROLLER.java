@@ -27,6 +27,11 @@ public class CONTROLLER
         score = 0;
         player = new Random().nextInt(7);
         s = choose(player);
+        try{
+            s.getIn();
+            } 
+        catch (InterruptedException e)
+            {System.out.println("ERROR");}
         v.addObservable(s);
         v.newMittelgrund(s.gettextur());
         m.newSpieler(s);
@@ -62,15 +67,22 @@ public class CONTROLLER
         }
     }
     
-    public void newSpieler(SPIELER s)
+    public void newSpieler(SPIELER ss)
     {
+        System.out.println(player);
         v.clearMittelgrund();
         System.out.println("Mittelgrund clear");
-        v.addObservable(s);
+        v.addObservable(ss);
         System.out.println("added");
-        v.newMittelgrund(s.gettextur());
+        v.newMittelgrund(ss.gettextur());
         System.out.println("Mittelgrund added");
-        m.newSpieler(s);
+        m.newSpieler(ss);
+        s = ss;
+        try{
+            ss.getIn();
+            } 
+        catch (InterruptedException e)
+            {System.out.println("ERROR");}
         System.out.println("added in Model");
     }
     
@@ -79,33 +91,39 @@ public class CONTROLLER
         if(t.getRunning() == true)
         {
             switch(code) {
-                case Taste.RECHTS: m.spieler.rechts(); break;
-                case Taste.LINKS:  m.spieler.links(); break;
+                case Taste.RECHTS: m.spieler.rechts();
+                System.out.println("rechts"); break;
+                case Taste.LINKS:  m.spieler.links();
+                System.out.println("links"); break;
             }
         }
         else
         {           
             switch(code) {
                 case Taste.RECHTS: 
-                    if(player < 7)
+                    player += 1;
+                    if(player >= 7)
                     {
-                        player += 1;
+                        player = 0;
+                    }
+                    try{
                         s.getOut();
                         newSpieler(choose(player));
-                    }
-                    break;
-                case Taste.LINKS:
-                    if(player < 7)
-                    {
-                        player += 1;
-                        newSpieler(choose(player));
-                    }
+                        } 
+                    catch (InterruptedException e)
+                        {System.out.println("ERROR");}                    
                     break;
                 case Taste.ENTER:
-                    t.start();
+                    StartGame();
                     break;
-            }
+            }           
         }
+    }
+    
+    public void StartGame()
+    {
+        t.start();
+        s.start();
     }
     
     public void tick()
@@ -117,7 +135,7 @@ public class CONTROLLER
             v.setScore(score);
             if(calcTrue(chance) == true)
             {
-                chance = 0.0001;
+                chance = 0.0005;
                 calcObjects();
             }
             else
@@ -172,7 +190,7 @@ public class CONTROLLER
     {
         int pX = (int)m.bahnen[bahn].getMitte();
         int br = m.bahnen[bahn].getBreite();
-        switch(new Random().nextInt(2))
+        switch(new Random().nextInt(3))
         {
             case 0:
                 HINDERNISS obj = new Fels(pX,br);

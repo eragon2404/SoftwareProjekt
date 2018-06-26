@@ -5,25 +5,49 @@ public abstract class SPIELER extends OBJECT
     public MODEL m;
     public float goToX;
     public CONTROLLER c;
+    boolean running;
     
     public SPIELER(MODEL newm,CONTROLLER newc)
     {
+        running = false;
         m = newm;
         bahn = (m.bahnen.length+1)/2;
         PosX = -m.getBreite();
         goToX = m.bahnen[bahn-1].getMitte();
         PosY = m.y - m.y/4;
-        setChanged = true;
-        c = newc;
+        setChanged = false;
+        c = newc;        
     }
     
     public void getOut()
-    {
-        while(PosX < m.getAbahnen() * m.getBreite())
+    throws InterruptedException {
+        while(PosX+0 < (m.getAbahnen()+2) * m.getBreite())
         {
-            PosX += 10;
-            textur.positionSetzen(PosX,PosY);
+            this.PosX += 5;
+            textur.positionSetzen(PosX+0,PosY+0);
+            Thread.sleep(5);
         }
+        System.out.println("finished");
+    }
+       
+    public void getIn()
+    throws InterruptedException
+    {
+        PosX = -(m.getBreite());
+        textur.positionSetzen(PosX,PosY);
+        while(PosX < goToX)
+        {
+            PosX += 5;
+            textur.positionSetzen(PosX,PosY);
+            Thread.sleep(5);
+        }
+        System.out.println("finished");
+    }
+    
+    
+    public void start()
+    {
+        running = true;
     }
     
     public void collision()
@@ -51,15 +75,18 @@ public abstract class SPIELER extends OBJECT
     
     public void tick()
     {
-        if(PosX - goToX > 10)
+        if(running == true)
         {
-            PosX -= 20;
-            setChanged = true;
-        }
-        else if(PosX - goToX < -10)
-        {
-            PosX += 20;
-            setChanged = true;
+            if(PosX - goToX > 10)
+            {
+                PosX -= 20;
+                setChanged = true;
+            }
+            else if(PosX - goToX < -10)
+            {
+                PosX += 20;
+                setChanged = true;
+            }
         }
     }
     
