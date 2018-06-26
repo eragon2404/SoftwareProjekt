@@ -13,6 +13,7 @@ public class VIEW extends Game
     int sx;
     int sy;
     Text SC;
+    private MAUS maus;
 
     public VIEW(CONTROLLER newc) {
         super(1000,1000,"Filipinity");
@@ -30,6 +31,11 @@ public class VIEW extends Game
         c = newc; 
         SC = new Text("0",sx-sx/5,sy/5);
         newVordergrund(SC);
+        Bild mausbild = new Bild(0,0,"Recources/fadenkreuz.gif");
+        Punkt hotspot = new Punkt(11,11);
+        Maus maus = new Maus(mausbild, hotspot);
+        mausAnmelden(maus);
+
     }
     
     public void setScore(float wert)
