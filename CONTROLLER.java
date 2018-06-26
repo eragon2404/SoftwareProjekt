@@ -11,7 +11,7 @@ public class CONTROLLER
     CLOCK t;
     BACKGROUND b;
     SPIELER s;
-    float chance;
+    double chance;
     float score;
     int player;
     
@@ -23,7 +23,7 @@ public class CONTROLLER
         b = new BACKGROUND(aB,v.getSX(),v,v.getSY());
         t = new CLOCK(m,v,this,b);
         v.manager.anmelden(t,50);
-        chance = 0;
+        chance = 0.0001;
         score = 0;
         player = new Random().nextInt(7);
         s = choose(player);
@@ -65,9 +65,13 @@ public class CONTROLLER
     public void newSpieler(SPIELER s)
     {
         v.clearMittelgrund();
+        System.out.println("Mittelgrund clear");
         v.addObservable(s);
+        System.out.println("added");
         v.newMittelgrund(s.gettextur());
+        System.out.println("Mittelgrund added");
         m.newSpieler(s);
+        System.out.println("added in Model");
     }
     
     public void taste(int code)
@@ -113,12 +117,12 @@ public class CONTROLLER
             v.setScore(score);
             if(calcTrue(chance) == true)
             {
-                chance = 0;
+                chance = 0.0001;
                 calcObjects();
             }
             else
             {
-                chance += 0.0008;
+                chance *= 2;
             }
             System.out.println(chance);
         }
@@ -126,12 +130,12 @@ public class CONTROLLER
     
     public void collision()
     {
-        t.stop();
+        t.stopall();
     }
     
-    private boolean calcTrue(float ch)
+    private boolean calcTrue(double ch)
     {
-        if(new Random().nextFloat() <= ch)
+        if(new Random().nextDouble() <= ch)
         {
             return true;
         }
