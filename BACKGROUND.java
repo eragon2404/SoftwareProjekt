@@ -32,6 +32,13 @@ public class BACKGROUND
             {
                 v.delHintergrund(obj);
                 objects.remove(obj);
+                if(v.isBlend == true)
+                {
+                    try {
+                    v.blendIn();
+                    }
+                    catch(InterruptedException e) {}
+                }
             }
         }
         if(lastY.getPosY() >= -4)

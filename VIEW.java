@@ -13,23 +13,83 @@ public class VIEW extends Game
     int sx;
     int sy;
     Text SC;
+    Maus fake;
+    Maus real;
+    Rechteck blende;
+    boolean isBlend;
 
     public VIEW(CONTROLLER newc) {
-        super(1000,1000,"Filipinity");
+        super(1000,1100,"Flippility");
+        BoundingRechteck Fenster = fensterGroesse();
+        sx = (int)Fenster.breite;
+        sy = (int)Fenster.hoehe;
+        blende = new Rechteck(0,0,sx,sy);
+        blende.farbeSetzen(new Farbe(0,0,0,255));
         observables1 = new LinkedList();
         observables0 = new LinkedList();   
         Hintergrund = new Knoten();
         Mittelgrund = new Knoten();
-        Vordergrund = new Knoten();
+        Vordergrund = new Knoten();        
         wurzel.add(Hintergrund);
         wurzel.add(Mittelgrund);
-        wurzel.add(Vordergrund);
-        BoundingRechteck Fenster = fensterGroesse();
-        sx = (int)Fenster.breite;
-        sy = (int)Fenster.hoehe;
+        wurzel.add(Vordergrund); 
+        wurzel.add(blende);
+        isBlend = true;
         c = newc; 
-        SC = new Text("0",sx-sx/5,sy/5);
+        SC = new Text("0",sx-sx/5,sy/5);       
+    }
+    
+    public void startScreen()
+    {
+        Text t = new Text("Flippility",(int)(sx/2)-sx/4,(int)(sy/12),"LittleLordFontleroy",sx/4,0,"white");
+        t.farbeSetzen(new Farbe(20,70,220));
+        Figur startB = new Figur((sx/2)-(sx/12),(int)(sy/2.5),"Recources/Play.eaf");
+        startB.faktorSetzen(sx/100);
+        Figur switchB = new Figur(c.s.getPosX()-sx/60,sy-sy/7,"Recources/switch.eaf");
+        switchB.faktorSetzen(sx/250);
+        newVordergrund(t);
+        newVordergrund(startB);
+        newVordergrund(switchB);
+        real = new Maus(new Figur(0,0,"Recources/maus.eaf"),new Punkt(3,3),false,false);        
+        real.anmelden(c,startB,1);
+        real.anmelden(c,switchB,2);
+        fake = new Maus(new Figur(0,0,"Recources/clear.eaf"),new Punkt(0,0),false,false);
+        mausAnmelden(fake);
+    }
+    
+    public void endScreen(int score)
+    {
+        clearVordergrund();
+        Text t = new Text("Game Over",(sx/2)-sx/(float)4.4,(sy/24),"LittleLordFontleroy",sx/6,0,"white");
+        t.farbeSetzen(new Farbe(20,70,220));
+        Text sco = new Text(Integer.toString(score),((sx/2)-sx/100)-(sx/33)*(String.valueOf(score).length()-1),(sy/5),"LittleLordFontleroy",sx/6,0,"white");
+        sco.farbeSetzen(new Farbe(20,70,220));
+        Figur restart = new Figur((sx/3)-sx/12,(int)(sy/2.5),"Recources/Restart.eaf");
+        restart.faktorSetzen(sx/100);
+        Figur save = new Figur((sx)-(sx/3)-sx/12,(int)(sy/2.5),"Recources/Save.eaf");
+        save.faktorSetzen(sx/100);
+        newVordergrund(t);
+        newVordergrund(sco);
+        newVordergrund(restart);
+        newVordergrund(save);
+    }
+    
+    public void blendIn() throws InterruptedException
+    {
+        isBlend = false;
+        for(int i = 255; i > 0; i--)
+        {
+            blende.farbeSetzen(new Farbe(0,0,255-i,i));
+            Thread.sleep(20);
+        }
+        mausAnmelden(real);
+    }
+    
+    public void terminateScreen()
+    {
+        clearVordergrund();
         newVordergrund(SC);
+        mausAnmelden(fake);
     }
     
     public void setScore(float wert)
@@ -95,6 +155,12 @@ public class VIEW extends Game
         observables1.clear();
         Mittelgrund.leeren();
     }
+    
+    public void clearVordergrund()
+    {
+        Vordergrund.leeren();
+    }
+
 
     @Override
     public void tasteReagieren(int code) 
@@ -135,7 +201,7 @@ public class VIEW extends Game
             {               
                 obj.gettextur().positionSetzen(obj.getPosX()-obj.getBreite()/2,obj.getPosY());
                 obj.actionPerformed();
-            }
+            }           
         }
     }
     

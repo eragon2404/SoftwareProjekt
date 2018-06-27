@@ -1,6 +1,6 @@
 import ea.*;
 import java.util.*;
-public class CONTROLLER
+public class CONTROLLER implements MausReagierbar
 {
     public static void main(String[] args)
     {
@@ -35,7 +35,33 @@ public class CONTROLLER
         v.addObservable(s);
         v.newMittelgrund(s.gettextur());
         m.newSpieler(s);
+        v.startScreen();
     }
+    
+    public void mausReagieren(int code)
+    {
+        switch(code)
+        {
+            case 2:
+                player += 1;
+                    if(player >= 7)
+                    {
+                        player = 0;
+                    }
+                    try{
+                        s.getOut();
+                        newSpieler(choose(player));
+                        } 
+                    catch (InterruptedException e)
+                        {System.out.println("ERROR");} 
+                break;
+            case 1:
+                v.terminateScreen();
+                StartGame();
+                break;
+        }
+    }
+   
     
     public void restart(int aBahn)
     {
@@ -97,27 +123,6 @@ public class CONTROLLER
                 System.out.println("links"); break;
             }
         }
-        else
-        {           
-            switch(code) {
-                case Taste.RECHTS: 
-                    player += 1;
-                    if(player >= 7)
-                    {
-                        player = 0;
-                    }
-                    try{
-                        s.getOut();
-                        newSpieler(choose(player));
-                        } 
-                    catch (InterruptedException e)
-                        {System.out.println("ERROR");}                    
-                    break;
-                case Taste.ENTER:
-                    StartGame();
-                    break;
-            }           
-        }
     }
     
     public void StartGame()
@@ -149,6 +154,7 @@ public class CONTROLLER
     public void collision()
     {
         t.stopall();
+        v.endScreen((int)score);
     }
     
     private boolean calcTrue(double ch)
