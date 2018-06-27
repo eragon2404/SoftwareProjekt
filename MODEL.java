@@ -28,6 +28,14 @@ public class MODEL
         }
     }
     
+    public void terminate()
+    {
+        for(int i = 0; i < bahnen.length; i++)
+        {
+            bahnen[i].terminate();
+        }
+    }
+    
     public SPIELER getSpieler()
     {
         return spieler;

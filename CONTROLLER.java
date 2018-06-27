@@ -14,6 +14,7 @@ public class CONTROLLER implements MausReagierbar
     double chance;
     float score;
     int player;
+    float initPos;
     
     public CONTROLLER()
     {
@@ -35,11 +36,14 @@ public class CONTROLLER implements MausReagierbar
         v.addObservable(s);
         v.newMittelgrund(s.gettextur());
         m.newSpieler(s);
+        initPos = s.getPosX();
         v.startScreen();
+        v.sM1();
     }
     
     public void mausReagieren(int code)
     {
+        v.sClick();
         switch(code)
         {
             case 2:
@@ -55,9 +59,22 @@ public class CONTROLLER implements MausReagierbar
                     catch (InterruptedException e)
                         {System.out.println("ERROR");} 
                 break;
+                
             case 1:
                 v.terminateScreen();
                 StartGame();
+                break;
+                
+            case 3:
+                v.stopM2();
+                v.terminateEndScreen();
+                score = 0;     
+                m.terminate();
+                v.startScreen();  
+                v.startMaus();
+                newSpieler(choose(player));
+                t.startBack();
+                v.sM1();
                 break;
         }
     }
@@ -154,7 +171,10 @@ public class CONTROLLER implements MausReagierbar
     public void collision()
     {
         t.stopall();
+        v.stopM1();
+        v.sCrash();
         v.endScreen((int)score);
+        v.sM2();
     }
     
     private boolean calcTrue(double ch)

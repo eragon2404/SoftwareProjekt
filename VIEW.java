@@ -16,7 +16,12 @@ public class VIEW extends Game
     Maus fake;
     Maus real;
     Rechteck blende;
+    Rechteck blende2;
     boolean isBlend;
+    Sound click;
+    Sound crash;
+    Sound m1;
+    Sound m2;
 
     public VIEW(CONTROLLER newc) {
         super(1000,1100,"Flippility");
@@ -25,6 +30,8 @@ public class VIEW extends Game
         sy = (int)Fenster.hoehe;
         blende = new Rechteck(0,0,sx,sy);
         blende.farbeSetzen(new Farbe(0,0,0,255));
+        blende2 = new Rechteck(0,0,sx,sy);
+        blende2.farbeSetzen(new Farbe(0,0,0,0));
         observables1 = new LinkedList();
         observables0 = new LinkedList();   
         Hintergrund = new Knoten();
@@ -32,8 +39,13 @@ public class VIEW extends Game
         Vordergrund = new Knoten();        
         wurzel.add(Hintergrund);
         wurzel.add(Mittelgrund);
+        wurzel.add(blende2);
         wurzel.add(Vordergrund); 
         wurzel.add(blende);
+        click = new Sound("Recources/Click.wav");
+        crash = new Sound("Recources/crash.wav");
+        m1 = new Sound("Recources/Music1.wav");
+        m2 = new Sound("Recources/Music2.wav");
         isBlend = true;
         c = newc; 
         SC = new Text("0",sx-sx/5,sy/5);       
@@ -45,7 +57,7 @@ public class VIEW extends Game
         t.farbeSetzen(new Farbe(20,70,220));
         Figur startB = new Figur((sx/2)-(sx/12),(int)(sy/2.5),"Recources/Play.eaf");
         startB.faktorSetzen(sx/100);
-        Figur switchB = new Figur(c.s.getPosX()-sx/60,sy-sy/7,"Recources/switch.eaf");
+        Figur switchB = new Figur(c.initPos-sx/60,sy-sy/7,"Recources/switch.eaf");
         switchB.faktorSetzen(sx/250);
         newVordergrund(t);
         newVordergrund(startB);
@@ -54,7 +66,11 @@ public class VIEW extends Game
         real.anmelden(c,startB,1);
         real.anmelden(c,switchB,2);
         fake = new Maus(new Figur(0,0,"Recources/clear.eaf"),new Punkt(0,0),false,false);
-        mausAnmelden(fake);
+    }
+    
+    public void startMaus()
+    {
+        mausAnmelden(real);
     }
     
     public void endScreen(int score)
@@ -72,6 +88,22 @@ public class VIEW extends Game
         newVordergrund(sco);
         newVordergrund(restart);
         newVordergrund(save);
+        mausAnmelden(real);
+        real.anmelden(c,restart,3);
+        real.anmelden(c,save,4);
+        try
+        {
+            blendOut();
+        }
+        catch(InterruptedException e) {}        
+    }
+    
+    public void terminateEndScreen()
+    {
+        clearVordergrund();
+        clearMittelgrund();
+        blende2.farbeSetzen(new Farbe(0,0,0,0));
+        mausAnmelden(fake);
     }
     
     public void blendIn() throws InterruptedException
@@ -82,7 +114,16 @@ public class VIEW extends Game
             blende.farbeSetzen(new Farbe(0,0,255-i,i));
             Thread.sleep(20);
         }
-        mausAnmelden(real);
+        startMaus();
+    }
+    
+    public void blendOut() throws InterruptedException
+    {
+        for(int i = 0; i < 120; i++)
+        {
+            blende2.farbeSetzen(new Farbe(0,0,i/8,i));
+            Thread.sleep(10);
+        }
     }
     
     public void terminateScreen()
@@ -90,6 +131,36 @@ public class VIEW extends Game
         clearVordergrund();
         newVordergrund(SC);
         mausAnmelden(fake);
+    }
+    
+    public void sClick()
+    {
+        click.play();
+    }
+    
+    public void sCrash()
+    {
+        crash.play();
+    }
+    
+    public void sM1()
+    {
+        m1.loop();
+    }
+    
+    public void sM2()
+    {
+        m2.play();
+    }
+    
+    public void stopM1()
+    {
+        m1.stop();
+    }
+    
+    public void stopM2()
+    {
+        m2.stop();
     }
     
     public void setScore(float wert)
@@ -154,6 +225,7 @@ public class VIEW extends Game
     {
         observables1.clear();
         Mittelgrund.leeren();
+        //m.terminate();
     }
     
     public void clearVordergrund()

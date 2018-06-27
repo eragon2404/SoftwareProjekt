@@ -45,6 +45,12 @@ public class CLOCK implements Ticker
         Allrunning = false;
     }
     
+    public void startBack()
+    {
+        Backrunning = true;
+        Allrunning = false;
+    }
+    
     public void stopall()
     {
         Allrunning = false;

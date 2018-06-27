@@ -43,4 +43,9 @@ public class BAHN
     {
         return breite;
     }
+    
+    public void terminate()
+    {
+        aktiv.clear();
+    }
 }
