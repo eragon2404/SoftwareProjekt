@@ -1,5 +1,5 @@
 import ea.*;
-public class FullWater
+public class FullWater  //Rechteck fuer das Wasser, alternative fuer die Wassertextur
 {
     public Rechteck textur;
     
@@ -10,7 +10,7 @@ public class FullWater
         int sx = (aBahn -2)*breite;
         int sy = hoehe;
         textur = new Rechteck(x,y,sx,sy);
-        textur.farbeSetzen(new Farbe((int)(0.336*255),(int)(0.66*255),(int)(1.0*255)));
+        textur.farbeSetzen(new Farbe((int)(0.336*255),(int)(0.66*255),(int)(1.0*255)));  //hellblau
         v.newHintergrund(textur);
     }
 }

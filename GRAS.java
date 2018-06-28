@@ -1,5 +1,5 @@
 import ea.*;
-public class GRAS extends OBJECT
+public class GRAS extends OBJECT  //Grastextur
 {
     public GRAS(int bahn, int newbreite)
     {
@@ -11,7 +11,7 @@ public class GRAS extends OBJECT
         setChanged = true;
     }
     
-    public void tick()
+    public void tick()  //Bewegung
     {
         PosY += 10;
         setChanged = true;

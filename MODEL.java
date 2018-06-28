@@ -1,26 +1,23 @@
 import ea.*;
-public class MODEL
+public class MODEL  //Verwaltet das Model
 {
-    public SPIELER spieler;
-    public BAHN[] bahnen;
-    public HINDERNISS[] hindernisse;
-    public int x;
-    public int y;
+    public SPIELER spieler;  //Die Spielfigur
+    public BAHN[] bahnen;  //Array aller Bahnen
+    public int x;  //Fenstergroesse x
+    public int y;  //Fenstergroesse y
     
     public MODEL(int aBahn,int nx,int ny)
     {
         bahnen = new BAHN[aBahn];
         x = nx;
         y = ny;
-        for(int i = 0; i < aBahn; i++)
+        for(int i = 0; i < aBahn; i++)  //Erzeugung der Bahnen
         {
             bahnen[i] = new BAHN(i+1,aBahn,x,y);
         }
-        hindernisse = new HINDERNISS[1];
-        hindernisse[0] = new Fels(100,100);
     }
     
-    public void tick()
+    public void tick()  //gibt tick an alle Bahnen weiter
     {
         for(int i = 0; i < bahnen.length; i++)
         {
@@ -28,7 +25,7 @@ public class MODEL
         }
     }
     
-    public void terminate()
+    public void terminate()  //gibt terminate an alle Bahnen weiter
     {
         for(int i = 0; i < bahnen.length; i++)
         {
@@ -41,7 +38,7 @@ public class MODEL
         return spieler;
     }
     
-    public int getBreite()
+    public int getBreite()  //breite einer Bahn
     {
         return x/(bahnen.length+2);
     }
@@ -49,24 +46,14 @@ public class MODEL
     public int getAbahnen()
     {
         return bahnen.length;
-    }
+    }    
     
-    public int getLenHindernisse()
-    {
-        return hindernisse.length;
-    }
-    
-    public HINDERNISS getHinderniss(int i)
-    {
-        return hindernisse[i];
-    }
-    
-    public void addHind(int bahn, HINDERNISS hind)
+    public void addHind(int bahn, HINDERNISS hind)  //gibt das Hinderniss der richtigen Bahn weiter
     {
         bahnen[bahn].addOBJ(hind);
     }
     
-    public void newSpieler(SPIELER newSp)
+    public void newSpieler(SPIELER newSp)  //neusetzung der Spielerreferenz
     {
         spieler = newSp;
     }

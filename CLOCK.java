@@ -1,8 +1,8 @@
 import ea.*;
-public class CLOCK implements Ticker
+public class CLOCK implements Ticker  //Steuert das Ticksystem
 {
-    boolean Allrunning;
-    boolean Backrunning;
+    boolean Allrunning;  //wenn "WAHR" werden alle Ticks ausgefuehrt
+    boolean Backrunning;  //wenn "WAHR" aber allrunning nicht, wird der Tick im Model nicht ausgefuehrt -> keine Bewegung der Hindernisse
     MODEL m;
     VIEW v;
     CONTROLLER c;

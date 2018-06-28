@@ -1,14 +1,14 @@
 import java.util.LinkedList;
-public class BACKGROUND
+public class BACKGROUND  //Verwaltet den Hintergrund
 {
     int bahnen;
     int breite;
     int y;
     VIEW v;
-    OBJECT lastY;
-    float velo;
-    LinkedList<OBJECT> objects;
-    FullWater w;
+    OBJECT lastY;  //Referenz auf die letzte erstellte Textur
+    float velo;  //Geschwindigkeit
+    LinkedList<OBJECT> objects;  //Liste aller Texturen
+    FullWater w;  //Wasser
     
     public BACKGROUND(int newbahnen, int newbreite, VIEW newv, int newy)
     {
@@ -24,48 +24,48 @@ public class BACKGROUND
     
     public void tick()
     {
-        for(int i = 0; i < objects.size(); i++)
+        for(int i = 0; i < objects.size(); i++)  //Geht alle Hintergrundtexturen durch
         {
             OBJECT obj = objects.get(i);
-            obj.tick();
-            if(obj.getPosY() > y)
+            obj.tick();  //Gibt den Tick weiter
+            if(obj.getPosY() > y)  //Wenn Textur außerhalb des Fensters
             {
-                v.delHintergrund(obj);
-                objects.remove(obj);
-                if(v.isBlend == true)
+                v.delHintergrund(obj);  //Wird von der graphischen Oberflaeche entfernt
+                objects.remove(obj);  //Und aus der Liste entfernt
+                if(v.isBlend == true)  //Wenn die Blende im View noch aktiv ist
                 {
                     try {
-                    v.blendIn();
+                    v.blendIn();  //Wird die ausblend Animation ausgefuerht 
                     }
-                    catch(InterruptedException e) {}
+                    catch(InterruptedException e) {}  //noetig fuer sleep()
                 }
             }
         }
-        if(lastY.getPosY() >= -4)
+        if(lastY.getPosY() >= -4)  //Wenn die letzte Reihe vollstaendig im Bild ist
         {
-            newRow();
+            newRow();  //Wird eine neue Reihe erstellt
         }
         
     }
     
-    private void newRow()
+    private void newRow()  //Erstellt eine neue Reihe
     {
-        for(int i = 0; i < bahnen; i++)
+        for(int i = 0; i < bahnen; i++)  //Fuer alle Bahnen
         {
             OBJECT obj = null;
-            if(i == 0 || i == bahnen-1)
+            if(i == 0 || i == bahnen-1)  //Wenn Bahn ganz links oder ganz rechts
             {
-                obj = new GRAS(i+1,breite);
-                objects.add(obj);
-                v.addObservable0(obj);
-                v.newHintergrund(obj.gettextur());
+                obj = new GRAS(i+1,breite);  //neue Grastextur
+                objects.add(obj);  //Zur Liste hinzufuegen 
+                v.addObservable0(obj);  //Zur Beobachtungsliste von View hinzufuegen
+                v.newHintergrund(obj.gettextur());  //Zur graphischen Oberflaeche hinzufuegen
             }
-            else
+            else  //sonst 
             {
-                //obj = new WASSER(i+1,breite);
+                //obj = new WASSER(i+1,breite);  //Wassertextur (ersetzt durch Fullwater wegen Lag)
             }
             
         }
-        lastY = objects.getLast();
+        lastY = objects.getLast();  //lastY neu setzen
     }
 }
