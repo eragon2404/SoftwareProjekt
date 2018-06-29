@@ -24,7 +24,7 @@ public class VIEW extends Game  //User-Interface fuer graphische und Audio ausga
     Sound m2;  //Traurige Hintergrundmusik
 
     public VIEW(CONTROLLER newc) {
-        super(1000,1100,"Flippility");  //Fenstergroesse und Fenstername, Initialiesierung des Fensters
+        super(1000,1000,"Flippility");  //Fenstergroesse und Fenstername, Initialiesierung des Fensters
         BoundingRechteck Fenster = fensterGroesse();  //Gibt ein Rechteck mit der Fenstergroesse zurueck, notwendig bei Vollbild
         sx = (int)Fenster.breite;  //Uebernimmt die Werte vom Rechteck
         sy = (int)Fenster.hoehe;

@@ -10,8 +10,19 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
-public class TestClass {
-
+public class SQL {
+    
+    private Statement statement = null;
+    private Connection connection = null;	
+    public SQL()
+    {
+       Connection connection = null;		 
+        Statement statement = null;
+        ResultSet resultSet = null;
+        ResultSetMetaData metaData = null;
+        int numberOfColumns = 0;
+     }
+     
     public static void main(String[] args){
         System.out.println("Das ist ein Test für die Datenbank-Anbindung");
 
@@ -25,17 +36,17 @@ public class TestClass {
             String driver = "com.mysql.jdbc.Driver";			
             Class.forName(driver);		 
 
-            String url = "jdbc:mysql://192.168.3.3:3306/team11";
-            String username = "team11";
-            String password = "123";
+            String url = "jdbc:mysql://192.168.3.3:3306/team23";
+            String username = "team23";
+            String password = "4e6T8u";
 
             connection = DriverManager.getConnection(url ,username,password);
             statement = connection.createStatement();
 
             System.out.println("Connection Established");
 
-            //resultSet = statement.executeQuery("SELECT * FROM q11TableTest");
-            statement.executeUpdate("CREATE TABLE Highscore Nickname VARCHAR(100), Highscore INTEGER");
+            resultSet = statement.executeQuery("SELECT * FROM highscore");
+            //statement.executeUpdate("CREATE TABLE Highscore (Nickname VARCHAR(100), Highscore INTEGER)");
             metaData = resultSet.getMetaData();
             numberOfColumns = metaData.getColumnCount();
 
@@ -76,5 +87,52 @@ public class TestClass {
 
             }
         }
+        
+        
     }
-}
+    
+    public void neu()
+    {
+          try	{
+              String driver = "com.mysql.jdbc.Driver";			
+            Class.forName(driver);		 
+
+            String url = "jdbc:mysql://192.168.3.3:3306/team23";
+            String username = "team23";
+            String password = "4e6T8u";
+
+            connection = DriverManager.getConnection(url ,username,password);
+            statement = connection.createStatement();
+
+            System.out.println("Connection Established");
+
+            
+              statement.executeUpdate("INSERT INTO Highscore VALUES ('Testperson1',100)"); 
+        } catch(SQLException sqlException){
+            System.out.println("sqlException");
+            sqlException.printStackTrace();		 
+            System.exit(1);		 
+        } catch(ClassNotFoundException classNotFound) {
+            System.out.println("ClassNotFoundException");
+            classNotFound.printStackTrace();
+            System.exit(1);		 
+        } finally {
+            try {
+                statement.close();
+                connection.close();
+            } catch(Exception exception){
+                System.out.println("FinallyException");
+                exception.printStackTrace();
+                System.exit(1);		 
+
+            }
+     }
+    }
+    
+    public void update()
+    {
+      
+              
+        }
+    }
+

@@ -12,6 +12,7 @@ public class CONTROLLER implements MausReagierbar  //Spielsteuernde Klasse
     CLOCK t;
     BACKGROUND b;
     SPIELER s;
+    SQL sql;
     double chance;  //Wahrscheinlichkeit dass neue Hindernisse gespawnt werden
     float score;  //Score des Nutzers
     int player;  //Index der derzeitigen Spielfigur
@@ -27,6 +28,7 @@ public class CONTROLLER implements MausReagierbar  //Spielsteuernde Klasse
         v.manager.anmelden(t,50);  //Meldet die Clock bei der Engine Alpha an
         chance = 0.0001;
         score = 0;
+        sql = new SQL();  //Datenbank
         player = new Random().nextInt(7);  //Zufaelliger Index fuer Start-Spielfigur
         s = choose(player);  //erstellt den Spieler
         try{
