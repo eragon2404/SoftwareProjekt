@@ -84,6 +84,7 @@ public class CONTROLLER implements MausReagierbar  //Spielsteuernde Klasse
                 break;
                 
             case 4:  //Der [SAVE] -Knopf
+                sql.neu(v.eingabeFordern("Name:"),(int)score);
                 break;  //Stehe die heilige Winnie uns bei  #SQL
         }
     }
