@@ -91,7 +91,7 @@ public class SQL {
         
     }
     
-    public void neu()
+    public void neu(String name, int Score)
     {
           try	{
               String driver = "com.mysql.jdbc.Driver";			
@@ -107,7 +107,7 @@ public class SQL {
             System.out.println("Connection Established");
 
             
-              statement.executeUpdate("INSERT INTO Highscore VALUES ('Testperson1',100)"); 
+              statement.executeUpdate("INSERT INTO Highscore VALUES ('"+name+"',"+Integer.toString(Score)+")"); 
         } catch(SQLException sqlException){
             System.out.println("sqlException");
             sqlException.printStackTrace();		 

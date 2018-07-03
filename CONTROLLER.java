@@ -46,7 +46,10 @@ public class CONTROLLER implements MausReagierbar  //Spielsteuernde Klasse
     
     public void mausReagieren(int code)  //Reaktion auf Mausklicks auf Knoepfe
     {
+        try{
         v.sClick();  //Klicksound
+        }
+        catch(Exception e) {}
         switch(code)
         {
             case 2:  //Der [SPIELFIGURSWITCH] -Knopf
