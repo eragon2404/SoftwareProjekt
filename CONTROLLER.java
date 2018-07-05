@@ -24,13 +24,13 @@ public class CONTROLLER implements MausReagierbar  //Spielsteuernde Klasse
         int aB = Integer.parseInt(v.eingabeFordern("Anzahl Bahnen"));  //fraegt den Nutzer in einem Fenster nach der Anzahl der Bahnen
         m = new MODEL(aB,v.getSX(),v.getSY());  //Model wird die Bahnen etc erstellen
         b = new BACKGROUND(aB,v.getSX(),v,v.getSY());
+        s = choose(player);  //erstellt den Spieler
         t = new CLOCK(m,v,this,b);
         v.manager.anmelden(t,50);  //Meldet die Clock bei der Engine Alpha an
         chance = 0.0001;
         score = 0;
         sql = new SQL();  //Datenbank
-        player = new Random().nextInt(7);  //Zufaelliger Index fuer Start-Spielfigur
-        s = choose(player);  //erstellt den Spieler
+        player = new Random().nextInt(7);  //Zufaelliger Index fuer Start-Spielfigur        
         try{
             s.getIn();  //nicht wirklich noetig wegen der Blende
             } 

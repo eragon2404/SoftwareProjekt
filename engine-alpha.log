@@ -1,1 +1,2 @@
-[Fri Jun 29 08:27:41 CEST 2018][ERROR] Achtung! Die gewuenschte Schriftart existiert nicht im Font-Verzeichnis dieses PC! Wurde der Name falsch geschrieben? Oder existiert der Font nicht? (Text.java:222)
+[Thu Jul 05 13:58:59 CEST 2018][ERROR] Kritischer Fehler im Ticker: Eine Ausnahme wurde nicht abgefangen. Der Ticker wurde angehalten. Die folgende StackTrace sollte dir weitere Informationen liefern. (Manager.java:217)
+[Thu Jul 05 14:02:53 CEST 2018][ERROR] Kritischer Fehler im Ticker: Eine Ausnahme wurde nicht abgefangen. Der Ticker wurde angehalten. Die folgende StackTrace sollte dir weitere Informationen liefern. (Manager.java:217)

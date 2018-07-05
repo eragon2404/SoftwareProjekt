@@ -136,12 +136,12 @@ public class VIEW extends Game  //User-Interface fuer graphische und Audio ausga
     
     public void sClick()
     {
-        click.play();
+        //click.play();
     }
     
     public void sCrash()
-    {
-        crash.play();
+    {        
+        //crash.play();        
     }
     
     public void sM1()
@@ -151,7 +151,7 @@ public class VIEW extends Game  //User-Interface fuer graphische und Audio ausga
     
     public void sM2()
     {
-        m2.play();
+        //m2.play();
     }
     
     public void stopM1()
