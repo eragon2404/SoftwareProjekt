@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 public class SQL {
     
@@ -77,26 +78,26 @@ public class SQL {
        resultSet = statement.executeQuery("SELECT * FROM highscore");
        metaData = resultSet.getMetaData();
        numberOfColumns = metaData.getColumnCount();
+       
+            for(int i=1 ; i<=numberOfColumns ; i++){
+                System.out.printf("%-8s\t",metaData.getColumnName(i));	//formatiert wg. Zellbreite
+            }		 
+            System.out.println();
 
-       for(int i=1 ; i<=numberOfColumns ; i++){
-           System.out.printf("%-8s\t",metaData.getColumnName(i));  //formatiert wg. Zellbreite
-       }        
-       System.out.println();
+            while(resultSet.next()){
+                for(int i=1 ; i<=numberOfColumns ; i++){
+                    System.out.printf("%-8s\t",resultSet.getObject(i));
+                }		 
+                System.out.println();
+            }
 
-       while(resultSet.next()){
-           for(int i=1 ; i<=numberOfColumns ; i++){
-                System.out.printf("%-8s\t",resultSet.getObject(i));
-           }        
-           System.out.println();
-       }
-
-       //while(resultSet.next()){
-       //    for(int i=1 ; i<=numberOfColumns ; i++) {
-       //        System.out.printf("%-8s\t",resultSet.getObject(i));
-       //    }
-           System.out.println();
-       //}   
-       } catch(SQLException sqlException){
+            while(resultSet.next()){
+                for(int i=1 ; i<=numberOfColumns ; i++)	{
+                    System.out.printf("%-8s\t",resultSet.getObject(i));
+                }
+            }
+                System.out.println();
+      } catch(SQLException sqlException){
             System.out.println("sqlException");
             sqlException.printStackTrace();      
             System.exit(1);               
